@@ -1,0 +1,29 @@
+<h1>Card</h1>
+
+<div id="card">
+    {{#if courses.courses.length}}
+        <table>
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each courses.courses}}
+                <tr>
+                    <td>{{title}}</td>
+                    <td>{{count}}</td>
+                    <td>
+                        <button class="btn btm-small js-remove" data-id ={{id}} >Delete</button>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        <p><strong>Price:</strong><span class="price">{{courses.price}}</span></p>
+    {{else}}
+        <p>Card empty</p>
+    {{/if}}
+</div>
