@@ -1,9 +1,5 @@
-.naw-wrapper {
+.nav-wrapper {
     padding: 0 2rem;
-}
-
-.brand-logo {
-    margin-left: 1rem;
 }
 
 .price {
@@ -30,9 +26,30 @@
     font-size: 2.5rem;
 }
 
-.card-action.actions{
+.card-action.actions {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
 
+.course-form {
+    margin-bottom: 2rem;
+}
+
+.auth {
+    padding-top: 1rem;
+}
+
+.alert {
+    padding: 0.5rem 1rem;
+    margin: 1rem 1rem;
+    border-radius: 10px;
+    text-align: center;
+    background: rgba(255, 0, 0, 0.3);
+    color: red;
+}
+
+.avatar {
+    max-width: 300px;
+    height: auto;
 }

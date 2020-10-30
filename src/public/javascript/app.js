@@ -4,6 +4,20 @@ const toCurrency = price => {
         style: 'currency'
     }).format(price)
 }
+const toDate = date => {
+    return new Intl.DateTimeFormat('en-En', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    }).format(new Date(date))
+}
+
+document.querySelectorAll('.date').forEach(item => {
+    item.textContent = toDate(item.textContent);
+})
 
 document.querySelectorAll('.price').forEach(item => {
     item.textContent = toCurrency(item.textContent);
@@ -14,8 +28,13 @@ if($card) {
     $card.addEventListener('click', event => {
         if(event.target.classList.contains('js-remove')) {
             const id = event.target.dataset.id;
+            const csrf = event.target.dataset.csrf;
+
             fetch('/card/remove/' + id, {
-                method: 'delete'
+                method: 'delete',
+                headers: {
+                    'X-XSRF-TOKEN': csrf
+                }
             }).then(res => res.json())
                 .then(card => {
                     if(card.courses.length) {
@@ -25,7 +44,7 @@ if($card) {
                                 <td>${c.title}</td>
                                 <td>${c.count}</td>
                                 <td>
-                                    <button class="btn btm-small js-remove" data-id =${c.id} >Delete</button>
+                                    <button class="btn btm-small js-remove" data-id =${c._id} >Delete</button>
                                 </td>
                             </tr>`
                        }).join('');
@@ -38,3 +57,5 @@ if($card) {
         }
     })
 }
+
+M.Tabs.init(document.querySelectorAll('.tabs'));

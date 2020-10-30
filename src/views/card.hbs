@@ -1,7 +1,7 @@
 <h1>Card</h1>
 
 <div id="card">
-    {{#if courses.courses.length}}
+    {{#if courses.length}}
         <table>
             <thead>
             <tr>
@@ -11,18 +11,22 @@
             </tr>
             </thead>
             <tbody>
-            {{#each courses.courses}}
+            {{#each courses}}
                 <tr>
                     <td>{{title}}</td>
                     <td>{{count}}</td>
                     <td>
-                        <button class="btn btm-small js-remove" data-id ={{id}} >Delete</button>
+                        <button class="btn btm-small js-remove" data-id={{_id}} data-csrf={{@root.csrf}} >Delete</button>
                     </td>
                 </tr>
             {{/each}}
             </tbody>
         </table>
-        <p><strong>Price:</strong><span class="price">{{courses.price}}</span></p>
+        <p><strong>Price:     </strong><span class="price">{{price}}</span></p>
+        <form action="/orders" method="post">
+            <input type="hidden" name="_csrf" value="{{csrf}}">
+            <button class = 'btn' type="submit">Order</button>
+        </form>
     {{else}}
         <p>Card empty</p>
     {{/if}}

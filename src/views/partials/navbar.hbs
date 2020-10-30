@@ -15,16 +15,37 @@
                 <li><a href="/courses">Courses</a></li>
             {{/if}}
 
-            {{#if isAdding}}
-                <li class="active"><a href="/add">Add course</a></li>
+            {{#if isAuth}}
+                {{#if isAdding}}
+                    <li class="active"><a href="/add">Add course</a></li>
+                {{else}}
+                    <li><a href="/add">Add course</a></li>
+                {{/if}}
+                {{#if isProfile}}
+                    <li class="active"><a href="/profile">Profile</a></li>
+                {{else}}
+                    <li><a href="/profile">Profile</a></li>
+                {{/if}}
+                {{#if isCard}}
+                    <li class="active"><a href="/card">Card</a></li>
+                {{else}}
+                    <li><a href="/card">Card</a></li>
+                {{/if}}
+                {{#if isOrders}}
+                    <li class="active"><a href="/orders">Orders</a></li>
+                {{else}}
+                    <li><a href="/orders">Orders</a></li>
+                {{/if}}
+                <li><a href="/auth/logout">Exit</a></li>
             {{else}}
-                <li><a href="/add">Add course</a></li>
+                {{#if isLogin}}
+                    <li class="active"><a href="/auth/login">SIGN IN</a></li>
+                {{else}}
+                    <li><a href="/auth/login">SIGN IN</a></li>
+                {{/if}}
             {{/if}}
-            {{#if isCard}}
-                <li class="active"><a href="/card">Card</a></li>
-            {{else}}
-                <li><a href="/card">Card</a></li>
-            {{/if}}
+
+
         </ul>
     </div>
 </nav>
