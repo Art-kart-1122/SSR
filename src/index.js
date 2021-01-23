@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 const express = require('express');
 const path = require('path');
@@ -39,7 +38,7 @@ const hbs = exphbs.create({
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, '/views') );
+app.set('views', path.join(__dirname, '/views'));
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.use('/images', express.static(path.join(__dirname, '/../images')));
@@ -65,7 +64,7 @@ app.use(async (req, res, next) => {
 app.use(fileMiddleware.single('avatar'));
 app.use(csrf());
 app.use(flash());
-app.use(helmet());
+//app.use(helmet());
 app.use(compression());
 app.use(varMiddleware);
 app.use(userMiddleware);

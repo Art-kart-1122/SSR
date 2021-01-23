@@ -6,7 +6,7 @@ module.exports.registerValidator = [
         .custom(async (value, {req}) => {
         try {
             const user = await User.findOne({email: value});
-            if(user) return Promise.reject('User with this email ia exist')
+            if(user) return Promise.reject('User with this email ia ,exist')
 
         } catch (e) {
             console.log(e);
@@ -29,7 +29,7 @@ module.exports.loginValidator = [
         .custom(async (value, {req}) => {
             try {
                 const user = await User.findOne({email: value});
-                if(user) return Promise.reject('User with this email ia exist')
+                if(!user) return Promise.reject('User with this email ia exist')
 
             } catch (e) {
                 console.log(e);

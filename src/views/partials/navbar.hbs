@@ -1,4 +1,4 @@
-<nav>
+<!--<nav>
     <div class="nav-wrapper">
         <a href="/" class="brand-logo">Courses App</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -12,7 +12,7 @@
             {{#if isCourses}}
                 <li class="active"><a href="/courses">Courses</a></li>
             {{else}}
-                <li><a href="/courses">Courses</a></li>
+                <li><a href="/courses?page=1&limit=5">Courses</a></li>
             {{/if}}
 
             {{#if isAuth}}
@@ -49,3 +49,62 @@
         </ul>
     </div>
 </nav>
+
+-->
+<div class="navbar">
+    <div class="navbar__container container">
+        <div class="navbar__logo">
+            <i class="material-icons prefix">mode_edit</i>
+            KartDev
+        </div>
+
+        <div class="menu-icon">
+            <div class="navbar__item">
+                <i class="material-icons">format_align_justify</i>
+            </div>
+        </div>
+        <ul class="navbar__menu">
+            {{#if isHome}}
+                <li class="navbar__item active"><a class="navbar__links" href="/">Главная страница</a></li>
+            {{else}}
+                <li class="navbar__item"><a class="navbar__links" href="/">Главная страница</a></li>
+            {{/if}}
+
+            {{#if isCourses}}
+                <li class="navbar__item active"><a class="navbar__links" href="/courses">Курсы</a></li>
+            {{else}}
+                <li class="navbar__item"><a class="navbar__links" href="/courses?page=1&limit=5">Курсы</a></li>
+            {{/if}}
+
+            {{#if isAuth}}
+                {{#if isAdding}}
+                    <li class="navbar__item active"><a class="navbar__links" href="/add">Добавить курс</a></li>
+                {{else}}
+                    <li class="navbar__item"><a class="navbar__links" href="/add">Добаваить курс</a></li>
+                {{/if}}
+                {{#if isProfile}}
+                    <li class="navbar__item active"><a class="navbar__links" href="/profile">Профиль</a></li>
+                {{else}}
+                    <li class="navbar__item"><a class="navbar__links" href="/profile">Профиль</a></li>
+                {{/if}}
+                {{#if isCard}}
+                    <li class="navbar__item active"><a class="navbar__links" href="/card">Корзина</a></li>
+                {{else}}
+                    <li class="navbar__item"><a class="navbar__links" href="/card">Корзина</a></li>
+                {{/if}}
+                {{#if isOrders}}
+                    <li class="navbar__item active"><a class="navbar__links" href="/orders">Заказы</a></li>
+                {{else}}
+                    <li class="navbar__item"><a class="navbar__links" href="/orders">Заказы</a></li>
+                {{/if}}
+                <li class="navbar__item"><a class="navbar__links" href="/auth/logout">Выйти</a></li>
+            {{else}}
+                {{#if isLogin}}
+                    <li class="navbar__item active"><a class="navbar__links" href="/auth/login">Войти</a></li>
+                {{else}}
+                    <li class="navbar__item"><a class="navbar__links" href="/auth/login">Войти</a></li>
+                {{/if}}
+            {{/if}}
+        </ul>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 const {Router} = require('express');
 const Course = require('../models/course');
+const paginateMiddleware = require('../middleware/pagination');
 const {courseValidator} = require("../utils/validators");
 const {validationResult} = require('express-validator');
 const router = Router();
@@ -8,15 +9,17 @@ function isOwner(course, req) {
    return course.userId.toString() === req.user._id.toString()
 }
 
-router.get('/', async (req, res) => {
+router.get('/',  paginateMiddleware(Course), async (req, res) => {
     try {
-        const courses = await Course.find().populate('UserId','email name');
+        //const courses = await Course.find().populate('UserId','email name');
         res.status(200);
+        //console.log(res.paginatedResult);
         res.render('courses', {
             title: "Courses",
             isCourses: true,
             userId: req.user ? req.user._id.toString() : null,
-            courses,
+            courses: res.paginatedResult,
+            //courses
         });
     } catch (e) {
         console.log(e);

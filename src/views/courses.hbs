@@ -1,6 +1,17 @@
 <h1>Courses page</h1>
-{{#if courses}}
-    {{#each courses}}
+<div class="row">
+    <form class="col s12" action="/" method="get">
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                <label for="icon_prefix2">Search</label>
+            </div>
+        </div>
+    </form>
+</div>
+{{#if courses.current}}
+    {{#each courses.current.data}}
         <div class="row">
             <div class="col s6 offset-s3">
                 <div class="card">
@@ -30,6 +41,17 @@
             </div>
         </div>
     {{/each}}
+    <ul class="pagination">
+        {{#if courses.previous.page}}
+            <li class="waves-effect"><a href="/courses?page={{courses.previous.page}}&limit={{courses.previous.limit}}&q={{courses.previous.queryStr}}"><i class="material-icons">chevron_left</i></a></li>
+        {{/if}}
+        <li class="active">{{courses.current.page}}</li>
+        {{#if courses.next.page}}
+            <li class="waves-effect"><a href="/courses?page={{courses.next.page}}&limit={{courses.next.limit}}&q={{courses.previous.queryStr}}" ><i class="material-icons">chevron_right</i></a></li>
+        {{/if}}
+
+    </ul>
+
 {{else}}
     <p>No courses</p>
 {{/if}}
